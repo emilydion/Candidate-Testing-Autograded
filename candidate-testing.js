@@ -29,19 +29,29 @@ function askQuestion() {
     candidateAnswer = input.question("Enter your answer: "); 
     candidateAnswers.push(candidateAnswer); 
   }
-  return candidateAnswer; 
 }
 
 function gradeQuiz(candidateAnswers) {
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-    if (correctAnswer == candidateAnswer) {
+  let totalCorrect = 0; 
+  for (let i = 0; i < questions.length; i++) {
+    if (correctAnswers[i] == candidateAnswer) {
       console.log(`${candidateAnswer} is correct!`); 
+      totalCorrect++; 
     } else {
-      console.log(`${candidateAnswer} is incorrect. The correct answer is ${correctAnswer}.`); 
+      console.log(`${candidateAnswer} is incorrect. The correct answer is ${correctAnswers[i]}.`); 
     }
+  }
   
-
   let grade;  //TODO 3.2 use this variable to calculate the candidates score.
+
+  grade = (totalCorrect / questions.length * 100); 
+
+  if (grade >= 80) {
+    console.log(`Congratulations! You passed with a ${grade}%!`);
+  } else {
+    console.log(`Your grade was a ${grade}%. You must have a grade of 80% or higher to pass.`);
+  }
 
   return grade;
 }
@@ -51,6 +61,7 @@ function runProgram() {
   // TODO 1.1c: Greet candidate using their name //
   console.log("Hello, " + candidateName + "!");
   candidateAnswer = askQuestion();
+  console.log(candidateAnswers); 
   gradeQuiz(this.candidateAnswers);
 }
 

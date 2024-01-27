@@ -35,11 +35,11 @@ function gradeQuiz(candidateAnswers) {
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
   let totalCorrect = 0; 
   for (let i = 0; i < questions.length; i++) {
-    if (correctAnswers[i] == candidateAnswer) {
-      console.log(`${candidateAnswer} is correct!`); 
+    if (correctAnswers[i].toLowerCase() == candidateAnswers[i].toLowerCase()) {
+      console.log(`${candidateAnswers[i]} is correct!`); 
       totalCorrect++; 
     } else {
-      console.log(`${candidateAnswer} is incorrect. The correct answer is ${correctAnswers[i]}.`); 
+      console.log(`${candidateAnswers[i]} is incorrect. The correct answer is ${correctAnswers[i]}.`); 
     }
   }
   
@@ -58,11 +58,10 @@ function gradeQuiz(candidateAnswers) {
 
 function runProgram() {
   candidateName = askForName();
-  // TODO 1.1c: Greet candidate using their name //
+  // TODO 1.1c: Greet candidate using their name //git 
   console.log("Hello, " + candidateName + "!");
-  candidateAnswer = askQuestion();
-  console.log(candidateAnswers); 
-  gradeQuiz(this.candidateAnswers);
+  askQuestion();
+  gradeQuiz(candidateAnswers);
 }
 
 runProgram(); 
